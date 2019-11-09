@@ -1,0 +1,39 @@
+﻿@model PiDevCRM.Web.Models.PostesModele
+
+@{
+    ViewBag.Title = "Detail Poste";
+}
+
+<div class="table-responsive">
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+       
+            <tr>
+                <td>
+                   
+                    @Html.DisplayNameFor(model => model.post.Title)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.post.Content)
+                </td>
+            </tr>
+            <tr></tr>
+           @foreach (var prod in Model.ListComment)
+            {
+                <tr>
+
+                   
+                        <td></td>
+                        <td>
+                            @Html.DisplayFor(model => prod.Content)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => prod.CommentDate)
+                        </td>
+
+                   
+                </tr>
+            }
+        
+    </table>
+</div>
+        

@@ -16,9 +16,12 @@ namespace PiDevCRM.Domain.Entities
         public DateTime StartDate { get; set; }
         [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
-        public float Pourcentage { get; set; }
-        public int IdProduct { get; set; }
+        [RegularExpression("^[0-9]*%", ErrorMessage = "Only Numbers allowed.")]
+        public String Pourcentage { get; set; }
+        public int? IdProduct { get; set; }
         [ForeignKey("IdProduct")]
         public virtual Product Product { get; set; }
+
+        public virtual ICollection<Product> ListProducts { get; set; }
     }
 }

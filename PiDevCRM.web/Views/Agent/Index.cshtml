@@ -1,0 +1,64 @@
+﻿@model IEnumerable<PiDevCRM.Domain.Entities.Agent>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout2.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Prospection.TypeProspection)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeAgent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prospection.TypeProspection)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TypeAgent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdAgent }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdAgent }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdAgent })
+        </td>
+    </tr>
+}
+
+</table>

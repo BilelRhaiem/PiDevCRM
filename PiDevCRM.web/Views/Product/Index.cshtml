@@ -1,0 +1,79 @@
+﻿@model IEnumerable<PiDevCRM.Domain.Entities.Product>
+
+@{
+    ViewBag.Title = "Product List";
+    Layout = "~/Views/Shared/_AdminLayout2.cshtml";
+}
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NameProduct)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageProduct)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Availability)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Discount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pack)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameProduct)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+
+                @Html.DisplayFor(modelItem => item.Price)
+
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.ImageProduct)*@
+                @{ string path = "~/Content/uploads/" + @item.ImageProduct;}
+                <img src="@Url.Content(path)" width="50" height="50" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Availability)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discount.Pourcentage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pack.PackName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdProduct }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IdProduct }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdProduct })
+            </td>
+        </tr>
+    }
+
+</table>

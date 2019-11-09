@@ -1,0 +1,72 @@
+﻿@model PiDevCRM.Domain.Entities.Prospection
+
+
+
+@{
+    ViewBag.Title = "Details";
+   
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Stand</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeProspection)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypeProspection)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VilleId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VilleId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdProspection }) |
+    @Html.ActionLink("Back to List", "Index")
+    @Html.Hidden("lon", Model.Ville.lon)
+    @Html.Hidden("lat", Model.Ville.lat)
+</p>
+<div class="col-md-6">
+    <div id="map" style="height:400px;width:400px;"></div>
+    <script>
+
+        var hello = "Hello";
+        var map;
+        function initMap() {
+            var x = parseFloat(document.getElementById("lon").value);
+            var y = parseFloat(document.getElementById("lat").value);
+            console.log(x);
+            console.log(y);
+            map = new google.maps.Map(document.getElementById('map'), {
+
+                center: { lat: y, lng: x },
+                zoom: 12
+
+            });
+        }
+        document.reload(forceGet);
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGmjuiu70zGuns3QptLtl4wVWI59VLe84&callback=initMap" async defer></script>
+</div>
+

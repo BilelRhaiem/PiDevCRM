@@ -12,12 +12,14 @@ namespace PiDevCRM.Domain.Entities
     {
         [Key]
         public int IdPoste { get; set; }
-        public int IdUser { get; set; }
+        public int? IdClient { get; set; }
+        
         public String Title { get; set; }
         public String Content { get; set; }
         [DataType(DataType.Date)]
         public DateTime PublishDate { get; set; }
-        [ForeignKey("IdUser")]
-        public virtual User User { get; set; }
+        [ForeignKey("IdClient")]
+        public virtual Client Client { get; set; }
+        public virtual ICollection<Comment> ListComments { get; set; }
     }
 }

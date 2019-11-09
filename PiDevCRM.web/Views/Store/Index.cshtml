@@ -1,0 +1,59 @@
+﻿@model IEnumerable<PiDevCRM.Domain.Entities.Store>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NameStore)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.Adresse)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ouverture)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameStore)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Adresse)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ouverture)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdStore }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdStore }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdStore })
+        </td>
+    </tr>
+}
+
+</table>

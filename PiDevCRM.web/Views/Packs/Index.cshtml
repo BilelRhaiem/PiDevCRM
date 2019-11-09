@@ -1,0 +1,35 @@
+﻿@model IEnumerable<PiDevCRM.Domain.Entities.Pack>
+
+@{
+    ViewBag.Title = "Pack List";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PackName)
+        </th>     
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PackName)
+        </td>
+
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.IdPack }) |
+            @Html.ActionLink("Details", "Details", new { id = item.IdPack }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.IdPack })
+        </td>
+    </tr>
+}
+
+</table>

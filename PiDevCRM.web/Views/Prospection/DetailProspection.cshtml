@@ -1,0 +1,42 @@
+﻿@model PiDevCRM.Web.Models.ProspectionModele
+
+@{
+    ViewBag.Title = "DetailProspection";
+}
+
+<h2>DetailProspection</h2>
+
+<div class="table-responsive">
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        @foreach (var item in Model.ListProspection)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeProspection)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+        </tr>
+            <tr></tr>
+            foreach (var prod in Model.ListAgent)
+            {
+            <tr>
+
+                @if (item.IdProspection == prod.IdProspection)
+                {
+                    <td></td>
+                    <td>
+                        @Html.DisplayFor(modelItem => prod.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => prod.LastName)
+                    </td>
+
+                }
+            </tr>
+            }
+        }
+    </table>
+</div>
+        </div>
