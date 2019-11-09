@@ -1,0 +1,60 @@
+﻿@model IEnumerable<PiDevCRM.Domain.Entities.Discount>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout2.cshtml";
+}
+
+
+
+
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Discount List</h6>
+    </div>
+    <div class="card-body">
+        @Html.ActionLink("Create New", "Create")
+
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StartDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.EndDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Pourcentage)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StartDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EndDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Pourcentage)
+                            </td>
+
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.IdDiscount }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.IdDiscount }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.IdDiscount })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+   
+
+

@@ -1,0 +1,70 @@
+﻿@model PiDevCRM.Web.Models.PackProduct
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout2.cshtml";
+
+}
+
+
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Packs Details</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    @foreach (var item in Model.ListPacks)
+                    {
+                <tr>
+                    <td>
+                        <h3> @Html.DisplayFor(modelItem => item.PackName)</h3>
+                    </td>               
+
+                </tr>
+                        <tr></tr>
+                        foreach (var prod in Model.ListProds)
+                        {
+                        <tr>
+
+                            @if (item.IdPack == prod.IdPack)
+                            {
+                                <td></td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => prod.NameProduct)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => prod.Price)
+                                </td>
+                                <td>
+                                    @{ string path = "~/Content/uploads/" + @prod.ImageProduct;}
+                                    <img src="@Url.Content(path)" width="50" height="50" />
+                                </td>
+                            }
+                        </tr>
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,5 +14,8 @@ namespace PiDevCRM.Domain.Entities
         public int IdProspection { get; set; }
         public String TypeProspection { get; set; }
         public String Location { get; set; }
+        public virtual ICollection<Resources> ListResources { get; set; }
+        public virtual ICollection<Agent> ListAgents { get; set; }
+
     }
 }

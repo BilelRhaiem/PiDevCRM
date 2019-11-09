@@ -1,0 +1,32 @@
+﻿@model PiDevCRM.Web.Models.PackProduct
+
+@{
+    ViewBag.Title = "CartIndex";
+}
+
+<h2>CartIndex</h2>
+
+
+<table>
+    @foreach (var item in Model.ListProds)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameProduct)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.IdPack)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>*@
+        </tr>
+    }
+
+    @*@Html.TextBox("Quantity", new { htmlAttributes = new { @class = "form-control" } })*@
+</table>

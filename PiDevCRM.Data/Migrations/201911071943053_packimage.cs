@@ -1,0 +1,18 @@
+namespace PiDevCRM.Data.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class packimage : DbMigration
+    {
+        public override void Up()
+        {
+            AddColumn("dbo.Packs", "PackImage", c => c.String());
+        }
+        
+        public override void Down()
+        {
+            DropColumn("dbo.Packs", "PackImage");
+        }
+    }
+}

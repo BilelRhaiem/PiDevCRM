@@ -1,0 +1,35 @@
+﻿@model PiDevCRM.Domain.Entities.Pack
+@*@model Tuple<PiDevCRM.Domain.Entities.Pack,PiDevCRM.Domain.Entities.Product>*@
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout2.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4> @Html.DisplayFor(model => model.PackName)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ListProducts)
+        </dt>
+        <dd>
+            @foreach (var prod in Model.ListProducts)
+            {
+                if (Model.IdPack == prod.IdPack)
+                {
+
+                    @Html.DisplayFor(model => model.Product.NameProduct)
+
+                }
+
+            }
+        </dd>
+        </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = model.IdPack }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -13,8 +13,9 @@ namespace PiDevCRM.Domain.Entities
         [Key]
         public int IdCategory { get; set; }
         public String CategoryName { get; set; }
-        public int? IdUser { get; set; }
-        [ForeignKey("IdUser")]
-        public virtual User User { get; set; }
+        public int? IdClient { get; set; }
+        [ForeignKey("IdClient")]
+        public virtual Client Client { get; set; }
+        public virtual ICollection<Product> ListProducts { get; set; }
     }
 }

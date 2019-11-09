@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace PiDevCRM.web.Controllers
+namespace PiDevCRM.Web.Controllers
 {
     public class HomeController : Controller
     {

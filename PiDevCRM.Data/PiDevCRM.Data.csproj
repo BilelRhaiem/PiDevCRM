@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2E1D0DBB-EA8D-4F9A-B4BB-DCD6A90C03C0}</ProjectGuid>
+    <ProjectGuid>{8B7B9380-7213-41AC-9C71-68418EB6E7AB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PiDevCRM.Data</RootNamespace>
     <AssemblyName>PiDevCRM.Data</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -48,25 +48,116 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\AdsConfiguration.cs" />
+    <Compile Include="Configuration\AgentConfiguration.cs" />
+    <Compile Include="Configuration\BillConfiguration.cs" />
+    <Compile Include="Configuration\CartConfiguration.cs" />
+    <Compile Include="Configuration\CategoryConfiguration.cs" />
+    <Compile Include="Configuration\ClaimsConfiguration.cs" />
+    <Compile Include="Configuration\ClientConfiguration.cs" />
+    <Compile Include="Configuration\CommentConfiguration.cs" />
+    <Compile Include="Configuration\DiscountConfiguration.cs" />
+    <Compile Include="Configuration\PackConfiguration.cs" />
+    <Compile Include="Configuration\PostsConfiguration.cs" />
+    <Compile Include="Configuration\ProductConfiguration.cs" />
+    <Compile Include="Configuration\ProspectionConfiguration.cs" />
+    <Compile Include="Configuration\ResourceConfiguration.cs" />
+    <Compile Include="Configuration\StockConfiguration.cs" />
+    <Compile Include="Configuration\StoreConfiguration.cs" />
+    <Compile Include="Infrastructure\DatabaseFactory.cs" />
+    <Compile Include="Infrastructure\Disposable.cs" />
+    <Compile Include="Infrastructure\IDatabaseFactory .cs" />
+    <Compile Include="Infrastructure\IRepositoryBase.cs" />
+    <Compile Include="Infrastructure\IUnitOfWork.cs" />
+    <Compile Include="Infrastructure\RepositoryBase.cs" />
+    <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="Migrations\201911031518149_InitialCreate.cs" />
+    <Compile Include="Migrations\201911031518149_InitialCreate.Designer.cs">
+      <DependentUpon>201911031518149_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911031712572_kk.cs" />
+    <Compile Include="Migrations\201911031712572_kk.Designer.cs">
+      <DependentUpon>201911031712572_kk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911071931023_pricepack.cs" />
+    <Compile Include="Migrations\201911071931023_pricepack.Designer.cs">
+      <DependentUpon>201911071931023_pricepack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911071936236_floatprice.cs" />
+    <Compile Include="Migrations\201911071936236_floatprice.Designer.cs">
+      <DependentUpon>201911071936236_floatprice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911071943053_packimage.cs" />
+    <Compile Include="Migrations\201911071943053_packimage.Designer.cs">
+      <DependentUpon>201911071943053_packimage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911080838063_ll.cs" />
+    <Compile Include="Migrations\201911080838063_ll.Designer.cs">
+      <DependentUpon>201911080838063_ll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911081000199_manl.cs" />
+    <Compile Include="Migrations\201911081000199_manl.Designer.cs">
+      <DependentUpon>201911081000199_manl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911081017483_stock.cs" />
+    <Compile Include="Migrations\201911081017483_stock.Designer.cs">
+      <DependentUpon>201911081017483_stock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911081343317_klkl.cs" />
+    <Compile Include="Migrations\201911081343317_klkl.Designer.cs">
+      <DependentUpon>201911081343317_klkl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911081905180_qi.cs" />
+    <Compile Include="Migrations\201911081905180_qi.Designer.cs">
+      <DependentUpon>201911081905180_qi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="PiDevCRMContexte.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Infrastructure\DatabaseFactory.cs" />
-    <Compile Include="Properties\Infrastructure\Disposable.cs" />
-    <Compile Include="Properties\Infrastructure\IDatabaseFactory .cs" />
-    <Compile Include="Properties\Infrastructure\IRepositoryBase.cs" />
-    <Compile Include="Properties\Infrastructure\IUnitOfWork.cs" />
-    <Compile Include="Properties\Infrastructure\RepositoryBase.cs" />
-    <Compile Include="Properties\Infrastructure\UnitOfWork.cs" />
+    <Compile Include="Repositories\ProductRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Infrastructure\desktop.ini" />
     <None Include="packages.config" />
-    <None Include="Properties\Infrastructure\desktop.ini" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PiDevCRM.Domain\PiDevCRM.Domain.csproj">
-      <Project>{9428dc2c-607d-4f8d-8903-ab7af7e627e6}</Project>
+      <Project>{1C14865C-0CE8-4743-949C-A76592FF9A2D}</Project>
       <Name>PiDevCRM.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201911031518149_InitialCreate.resx">
+      <DependentUpon>201911031518149_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911031712572_kk.resx">
+      <DependentUpon>201911031712572_kk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911071931023_pricepack.resx">
+      <DependentUpon>201911071931023_pricepack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911071936236_floatprice.resx">
+      <DependentUpon>201911071936236_floatprice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911071943053_packimage.resx">
+      <DependentUpon>201911071943053_packimage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911080838063_ll.resx">
+      <DependentUpon>201911080838063_ll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911081000199_manl.resx">
+      <DependentUpon>201911081000199_manl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911081017483_stock.resx">
+      <DependentUpon>201911081017483_stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911081343317_klkl.resx">
+      <DependentUpon>201911081343317_klkl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911081905180_qi.resx">
+      <DependentUpon>201911081905180_qi.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
