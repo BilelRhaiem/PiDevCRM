@@ -13,5 +13,6 @@ namespace PiDevCRM.Domain.Entities
         public int IdStore { get; set; }
         public String NameStore { get; set; }
         public String Location { get; set; }
+        public virtual ICollection<Stock> ListStocks { get; set; }
     }
 }

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<PiDevCRM.Domain.Entities.Claims>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_FrontLayoutIndex.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.ClaimDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.typeClaims)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.statustype)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Answer)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClaimDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.typeClaims)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.statustype)
+        </td>
+        <td>
+            @*@if (item.statustype.Equals("non_traite"))
+        {
+
+            @Html.DisplayFor(modelItem => item.Answer.Equals("hhhhhhhh"))
+
+
+        }*@
+            @Html.DisplayFor(modelItem => item.Answer)
+        </td>
+            <td>
+                
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdClaims }) |
+                  @Html.ActionLink("Details", "Details", new { id = item.IdClaims }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdClaims })
+            </td>
+        </tr>
+}
+
+</table>

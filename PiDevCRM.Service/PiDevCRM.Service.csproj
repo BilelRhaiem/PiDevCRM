@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5677D3F3-D067-4380-8122-D62FC91102EC}</ProjectGuid>
+    <ProjectGuid>{EF6CE167-D3C7-42D1-90A1-9B439B7CE461}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PiDevCRM.Service</RootNamespace>
     <AssemblyName>PiDevCRM.Service</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -48,25 +48,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClaimService.cs" />
+    <Compile Include="IClaimService.cs" />
+    <Compile Include="IProductService.cs" />
+    <Compile Include="ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PiDevCRM.Data\PiDevCRM.Data.csproj">
-      <Project>{2e1d0dbb-ea8d-4f9a-b4bb-dcd6a90c03c0}</Project>
-      <Name>PiDevCRM.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PiDevCRM.Domain\PiDevCRM.Domain.csproj">
-      <Project>{9428dc2c-607d-4f8d-8903-ab7af7e627e6}</Project>
-      <Name>PiDevCRM.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ServicePattern\ServicePattern.csproj">
-      <Project>{c0ea75fe-4a50-45b8-8fbd-2d965895f190}</Project>
-      <Name>ServicePattern</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PiDevCRM.Data\PiDevCRM.Data.csproj">
+      <Project>{8b7b9380-7213-41ac-9c71-68418eb6e7ab}</Project>
+      <Name>PiDevCRM.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PiDevCRM.Domain\PiDevCRM.Domain.csproj">
+      <Project>{1c14865c-0ce8-4743-949c-a76592ff9a2d}</Project>
+      <Name>PiDevCRM.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServicePattern\ServicePattern.csproj">
+      <Project>{78a2c844-3700-4c06-834f-f76158b6187f}</Project>
+      <Name>ServicePattern</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

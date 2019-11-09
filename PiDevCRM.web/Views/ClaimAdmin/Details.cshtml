@@ -1,0 +1,72 @@
+﻿@model PiDevCRM.Domain.Entities.Claims
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Claims</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            @*  <dt>
+            @Html.DisplayNameFor(model => model.IdClient)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdClient)
+        </dd>*@
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ClaimDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ClaimDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.Raw(HttpUtility.HtmlDecode(Html.DisplayFor(model => model.Description).ToString()))
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Answer)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Answer)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.statustype)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.statustype)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.typeClaims)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.typeClaims)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @*   @Html.ActionLink("Edit", "Edit", new { id = Model.IdClaims }) |*@
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

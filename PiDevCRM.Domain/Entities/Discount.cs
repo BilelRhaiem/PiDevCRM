@@ -17,8 +17,10 @@ namespace PiDevCRM.Domain.Entities
         [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
         public float Pourcentage { get; set; }
-        public int IdProduct { get; set; }
+        public int? IdProduct { get; set; }
         [ForeignKey("IdProduct")]
         public virtual Product Product { get; set; }
+
+        public virtual ICollection<Product> ListProducts { get; set; }
     }
 }

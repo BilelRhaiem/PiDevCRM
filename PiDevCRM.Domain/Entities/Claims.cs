@@ -6,20 +6,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace PiDevCRM.Domain.Entities
 {
+    public enum TypeClaims { Branche_technique, Branche_financière, Branche_relationnelle };
+    public enum Status { non_traite , traite, en_cours };
     public class Claims
     {
+       
+
         [Key]
         public int IdClaims { get; set; }
-        public int IdUser { get; set; }
-        [DataType(DataType.DateTime)]
+        public int? IdClient { get; set; }
+        [DataType(DataType.Date)]
         public DateTime ClaimDate { get; set; }
-        public String  TypeClaims { get; set; }
+        public TypeClaims typeClaims { get; set; }
         public String Description { get; set; }
-        public String Status { get; set; }
+        public Status statustype { get; set; }
+        public String Answer { get; set; }
 
-        [ForeignKey("IdUser")]
-        public virtual User User { get; set; }
+        [ForeignKey("IdClient")]
+        public virtual Client Client { get; set; }
     }
 }

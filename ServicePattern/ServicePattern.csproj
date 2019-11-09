@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C0EA75FE-4A50-45B8-8FBD-2D965895F190}</ProjectGuid>
+    <ProjectGuid>{78A2C844-3700-4C06-834F-F76158B6187F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ServicePattern</RootNamespace>
     <AssemblyName>ServicePattern</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -48,19 +48,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\IService.cs" />
-    <Compile Include="Properties\Service.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PiDevCRM.Data\PiDevCRM.Data.csproj">
-      <Project>{2e1d0dbb-ea8d-4f9a-b4bb-dcd6a90c03c0}</Project>
-      <Name>PiDevCRM.Data</Name>
-    </ProjectReference>
+    <Compile Include="Service.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PiDevCRM.Data\PiDevCRM.Data.csproj">
+      <Project>{8b7b9380-7213-41ac-9c71-68418eb6e7ab}</Project>
+      <Name>PiDevCRM.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -12,9 +12,14 @@ namespace PiDevCRM.Domain.Entities
     {
         [Key]
         public int IdPack { get; set; }
-        public int IdProduct { get; set; }
+        public int? IdProduct { get; set; }
         [ForeignKey("IdProduct")]
         public virtual Product Product { get; set; }
+        public int? IdAd { get; set; }
+        [ForeignKey("IdAd")]
+        public virtual Ads Ad { get; set; }
+
+        public virtual ICollection<Product> ListProducts { get; set; }
 
     }
 }
