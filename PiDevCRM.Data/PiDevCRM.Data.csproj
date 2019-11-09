@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2E1D0DBB-EA8D-4F9A-B4BB-DCD6A90C03C0}</ProjectGuid>
+    <ProjectGuid>{8B7B9380-7213-41AC-9C71-68418EB6E7AB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PiDevCRM.Data</RootNamespace>
     <AssemblyName>PiDevCRM.Data</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -37,6 +37,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.1, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.1\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -48,25 +54,74 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\AdsConfiguration.cs" />
+    <Compile Include="Configuration\AgentConfiguration.cs" />
+    <Compile Include="Configuration\BillConfiguration.cs" />
+    <Compile Include="Configuration\CartConfiguration.cs" />
+    <Compile Include="Configuration\CategoryConfiguration.cs" />
+    <Compile Include="Configuration\ClaimsConfiguration.cs" />
+    <Compile Include="Configuration\ClientConfiguration.cs" />
+    <Compile Include="Configuration\CommentConfiguration.cs" />
+    <Compile Include="Configuration\DiscountConfiguration.cs" />
+    <Compile Include="Configuration\PackConfiguration.cs" />
+    <Compile Include="Configuration\PostsConfiguration.cs" />
+    <Compile Include="Configuration\ProductConfiguration.cs" />
+    <Compile Include="Configuration\ProspectionConfiguration.cs" />
+    <Compile Include="Configuration\ResourceConfiguration.cs" />
+    <Compile Include="Configuration\StockConfiguration.cs" />
+    <Compile Include="Configuration\StoreConfiguration.cs" />
+    <Compile Include="Infrastructure\DatabaseFactory.cs" />
+    <Compile Include="Infrastructure\Disposable.cs" />
+    <Compile Include="Infrastructure\IDatabaseFactory .cs" />
+    <Compile Include="Infrastructure\IRepositoryBase.cs" />
+    <Compile Include="Infrastructure\IUnitOfWork.cs" />
+    <Compile Include="Infrastructure\RepositoryBase.cs" />
+    <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="Migrations\201911041241417_InitialCreate.cs" />
+    <Compile Include="Migrations\201911041241417_InitialCreate.Designer.cs">
+      <DependentUpon>201911041241417_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911041503514_store.cs" />
+    <Compile Include="Migrations\201911041503514_store.Designer.cs">
+      <DependentUpon>201911041503514_store.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911051250104_stock.cs" />
+    <Compile Include="Migrations\201911051250104_stock.Designer.cs">
+      <DependentUpon>201911051250104_stock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911081742482_bil.cs" />
+    <Compile Include="Migrations\201911081742482_bil.Designer.cs">
+      <DependentUpon>201911081742482_bil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="PiDevCRMContexte.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Infrastructure\DatabaseFactory.cs" />
-    <Compile Include="Properties\Infrastructure\Disposable.cs" />
-    <Compile Include="Properties\Infrastructure\IDatabaseFactory .cs" />
-    <Compile Include="Properties\Infrastructure\IRepositoryBase.cs" />
-    <Compile Include="Properties\Infrastructure\IUnitOfWork.cs" />
-    <Compile Include="Properties\Infrastructure\RepositoryBase.cs" />
-    <Compile Include="Properties\Infrastructure\UnitOfWork.cs" />
+    <Compile Include="Repositories\ProductRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Infrastructure\desktop.ini" />
     <None Include="packages.config" />
-    <None Include="Properties\Infrastructure\desktop.ini" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PiDevCRM.Domain\PiDevCRM.Domain.csproj">
-      <Project>{9428dc2c-607d-4f8d-8903-ab7af7e627e6}</Project>
+      <Project>{1C14865C-0CE8-4743-949C-A76592FF9A2D}</Project>
       <Name>PiDevCRM.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201911041241417_InitialCreate.resx">
+      <DependentUpon>201911041241417_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911041503514_store.resx">
+      <DependentUpon>201911041503514_store.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911051250104_stock.resx">
+      <DependentUpon>201911051250104_stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911081742482_bil.resx">
+      <DependentUpon>201911081742482_bil.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

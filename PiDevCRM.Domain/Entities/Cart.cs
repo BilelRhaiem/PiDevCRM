@@ -10,19 +10,26 @@ namespace PiDevCRM.Domain.Entities
 {
     public class Cart
     {
+
         [Key]
         public int IdCart { get; set; }
-        
-        public int IdUser { get; set; }
-        
+
+        public int? IdClient { get; set; }
+
+        public int Quantity { get; set; }
+
+        public float TotalPrice { get; set; }
+
         public int? IdProduct { get; set; }
-       
+
         public int? IdPack { get; set; }
-        [ForeignKey("IdUser")]
-        public virtual User User { get; set; }
+
         [ForeignKey("IdProduct")]
         public virtual Product Product { get; set; }
         [ForeignKey("IdPack")]
         public virtual Pack Pack { get; set; }
+        [ForeignKey("IdClient")]
+        public virtual Client Client { get; set; }
+        public virtual ICollection<Bill> ListBills { get; set; }
     }
 }

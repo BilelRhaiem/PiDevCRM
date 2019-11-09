@@ -1,0 +1,78 @@
+﻿@model PiDevCRM.Web.Models.StockProduits
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout2.cshtml";
+}
+
+<!--Begin Page Content-->
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Liste des Boutiques</h1>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">liste des stocks</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+
+                    <thead>
+
+
+                    </thead>
+                    <tfoot>
+
+                    </tfoot>
+                    <tbody>
+
+                        @foreach (var item in Model.listStocks)
+                        {
+                            <tr>
+                                <td>
+                                    <h1> @Html.DisplayFor(modelItem => item.stockname)</h1>
+                                </td>
+                            </tr>
+                            foreach (var prod in Model.listProducts)
+                            {
+                                <tr>
+                                    @if (item.Ref_Stock == prod.IdStock)
+                                    {
+                                        <td>
+                                            @Html.DisplayFor(modelItem => prod.NameProduct)
+
+
+
+                                        </td>
+                                        <td>
+                                            @{ string path = "~/Content/uploads/" + prod.ImageProduct;}
+                                            <img src="@Url.Content(path)" alt="" height="60" width="60" />
+                                        </td>
+
+                                    }
+
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.container-fluid -->
+}
+<!-- Bootstrap core JavaScript-->
+<script src="~ContentAdmin/vendor/jquery/jquery.min.js"></script>
+<script src="~ContentAdmin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="~ContentAdmin/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="~ContentAdmin/js/sb-admin-2.min.js"></script>
+<!-- Page level plugins -->
+<script src="~ContentAdmin/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="~ContentAdmin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- Page level custom scripts -->
+<script src="~ContentAdmin/js/demo/datatables-demo.js"></script>

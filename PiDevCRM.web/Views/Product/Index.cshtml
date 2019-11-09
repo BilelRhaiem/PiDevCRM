@@ -1,0 +1,193 @@
+﻿@model IEnumerable<PiDevCRM.Domain.Entities.Product>
+
+@{
+    ViewBag.Title = "Product List";
+    Layout = "~/Views/Shared/_AdminLayout2.cshtml";
+}
+<!-- Custom fonts for this template -->
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="css/sb-admin-2.min.css" rel="stylesheet">
+<!-- Custom styles for this page -->
+<link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+@if (!Model.Any())
+{
+    <p>we don't have any products </p>
+}
+else
+{
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <h1 class="h3 mb-2 text-gray-800">Liste des Produits</h1>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Produits</h6>
+            </div>
+     <div><input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for a product.." title="Type in a name of product"></div>
+            
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+                        <thead>
+                            <tr>
+                            <tr role="row">
+
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.NameProduct)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Description)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Price)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ImageProduct)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Availability)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Category)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Discount)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Pack)
+                                </th>
+
+                            </tr>
+
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.NameProduct)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Description)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Price)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ImageProduct)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Availability)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Category)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Discount)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Pack)
+                                </th>
+
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NameProduct)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                    </td>
+                                    <td>
+
+                                        @Html.DisplayFor(modelItem => item.Price)
+
+                                    </td>
+                                    <td>
+                                        @*@Html.DisplayFor(modelItem => item.ImageProduct)*@
+                                        @{ string path = "~/Content/uploads/" + @item.ImageProduct;}
+                                        <img src="@Url.Content(path)" width="50" height="50" />
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Availability)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Discount.Pourcentage)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Pack.PackName)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.IdProduct }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.IdProduct }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.IdProduct })
+                                    </td>
+                                </tr>
+                            }
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <script>
+                        //fonction recherche par nom ajax
+                        function myFunction() {
+                            var input, filter, table, tr, td, i, txtValue;
+                            input = document.getElementById("myInput");
+                            filter = input.value.toUpperCase();
+                            table = document.getElementById("dataTable");
+                            tr = table.getElementsByTagName("tr");
+                            for (i = 0; i < tr.length; i++) {
+                                td = tr[i].getElementsByTagName("td")[0];
+                                if (td) {
+                                    txtValue = td.textContent || td.innerText;
+                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                        tr[i].style.display = "";
+                                    } else {
+                                        tr[i].style.display = "none";
+                                    }
+                                }
+                            }
+                        }
+                        
+                       
+                    </script>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+
+
+}
+<!-- Bootstrap core JavaScript-->
+<script src="~ContentAdmin/vendor/jquery/jquery.min.js"></script>
+<script src="~ContentAdmin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="~ContentAdmin/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="~ContentAdmin/js/sb-admin-2.min.js"></script>
+<!-- Page level plugins -->
+<script src="~ContentAdmin/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="~ContentAdmin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- Page level custom scripts -->
+<script src="~ContentAdmin/js/demo/datatables-demo.js"></script>
+
+
+
