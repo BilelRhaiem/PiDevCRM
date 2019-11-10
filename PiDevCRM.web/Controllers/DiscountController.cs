@@ -26,19 +26,6 @@ namespace PiDevCRM.Web.Controllers
         public ActionResult Index()
         {
 
-            ////using (PiDevCRMContexte ctx = new PiDevCRMContexte())
-            ////{
-            //    var x = Ds.GetAll().Where(a => a.EndDate < DateTime.Now);
-            //    var dis = x;
-            //    foreach (var item in dis)
-            //    {
-            //        var pr = ps.GetAll().Where(p => p.IdDiscount != null);
-            //        var o = pr;
-
-            //        //Ds.Delete(item);
-            //        //Ds.Commit();
-            //    }
-            //}
             return View(Ds.GetAll());
         }
 
@@ -142,6 +129,25 @@ namespace PiDevCRM.Web.Controllers
             return RedirectToAction("Index");
 
         }
+
+
+
+        public ActionResult Dashboard()
+        {
+            var list = Ds.GetAll();
+            List<int> repartitions = new List<int>();
+            var prices = list.Select(x => x.StartDate.ToString()).Distinct();
+            foreach (var item in prices)
+            {
+                repartitions.Add(list.Count(x => x.StartDate.ToString() == item));
+            }
+            var rep = repartitions;
+            ViewBag.PRICES = prices;
+            ViewBag.REP = repartitions.ToList();
+
+            return View();
+        }
+
     }
     }
 

@@ -34,7 +34,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PackPrice, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.Label("PackPrice", Model.PackPrice.ToString(), new { @readonly = "readonly" })
+                @Html.Label("PackPrice", Model.PackPrice.ToString(), new { @readonly = "readonly" }) TND
                 @Html.ValidationMessageFor(model => model.PackPrice, "", new { @class = "text-danger" })
             </div>
         </div>

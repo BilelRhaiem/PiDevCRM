@@ -38,10 +38,7 @@ namespace PiDevCRM.Web.Controllers
             return View(PS.GetAll());
         }
 
-        //public ActionResult IndexBackPacks()
-        //{
-        //    return View("~/Views/Packs/Index.cshtml");
-        //}
+       
 
 
 
@@ -63,12 +60,9 @@ namespace PiDevCRM.Web.Controllers
 
         }
 
-        public ActionResult IndexFront(/*Discount dis, Product p*/)
+        public ActionResult IndexFront()
         {
-            //if (dis.EndDate == DateTime.Today.Date)
-            //{
-            //    p.IdDiscount = null;
-            //}
+           
             return View(PS.GetAll());
         }
 
@@ -98,16 +92,15 @@ namespace PiDevCRM.Web.Controllers
         {
             var listCategories = cs.GetAll();
             ViewBag.Category = new SelectList(listCategories, "IdCategory", "CategoryName");
+
+            var ListSto = SS.GetAll();
+            ViewBag.stocks = new SelectList(ListSto, "Ref_Stock", "stockname");
+
             return View();
             
         }
 
-        public ActionResult CreateDiscount()
-        {
-            var ListDisc = DS.GetAll();
-            ViewBag.Discs = new SelectList(ListDisc, "IdDiscount", "Pourcentage");
-            return View();
-        }
+     
 
         // POST: Product/Create
         [HttpPost]
@@ -122,22 +115,11 @@ namespace PiDevCRM.Web.Controllers
                     var path = Path.Combine(Server.MapPath("~/Content/uploads/"), file.FileName);
                     file.SaveAs(path);
                 }
-
-
-
-              
+ 
 
                 PS.Add(product);
                 PS.Commit();
-                //Candidat C = Ps.GetById(p.Candidat_Id);
-
-                //MailService Ms = new MailService();
-                //Ms.receiver_Email = "manel.khamassi@esprit.tn";
-
-                //Ms.receiver_FullName = "manel";
-                //Ms.Mail_Subject = "New Products";
-                //Ms.Mail_Body = "Check out our newly added products";
-                //Ms.SendEmail();
+                
                 return RedirectToAction("Index");
             }
             catch

@@ -96,7 +96,7 @@ namespace PiDevCRM.Web.Controllers
                 var link = Request.Url.AbsolutePath.Replace(Request.Url.PathAndQuery, verifyurl);
 
                 var fromEmail = new MailAddress("mohamedamine.elhaddad@esprit.tn", "Mohamed Amine Elhaddad");
-                var toEmail = new MailAddress("takwa.hammedi@esprit.tn");
+                var toEmail = new MailAddress("haddadaminou@gmail.com");
                 var FromEmailPassword = "183JMT0057";
 
                 string subject = "New hot deals soon";
@@ -234,5 +234,23 @@ namespace PiDevCRM.Web.Controllers
 
             return View();
         }
+
+
+        public ActionResult DashboardPack()
+        {
+            var list = PaS.GetAll();
+            List<int> repartitions = new List<int>();
+            var prices = list.Select(x => x.EndDate.ToString()).Distinct();
+            foreach (var item in prices)
+            {
+                repartitions.Add(list.Count(x => x.EndDate.ToString() == item));
+            }
+            var rep = repartitions;
+            ViewBag.PRICES = prices;
+            ViewBag.REP = repartitions.ToList();
+
+            return View();
+        }
+
     }
 }
