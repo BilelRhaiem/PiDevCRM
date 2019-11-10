@@ -16,7 +16,7 @@ namespace PiDevCRM.Data.Configuration
                 .WithMany(cat => cat.ListProducts)
                 .HasForeignKey(prod => prod.IdCategory)
                 .WillCascadeOnDelete(true);
-            HasOptional(Prod => Prod.Pack)
+            HasRequired(Prod => Prod.Pack)
                .WithMany(pack => pack.ListProducts)
                .HasForeignKey(prod => prod.IdPack)
                .WillCascadeOnDelete(true);

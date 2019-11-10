@@ -65,7 +65,6 @@
     <Compile Include="Entities\Resources.cs" />
     <Compile Include="Entities\Stock.cs" />
     <Compile Include="Entities\Store.cs" />
-    <Compile Include="Entities\Ville.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

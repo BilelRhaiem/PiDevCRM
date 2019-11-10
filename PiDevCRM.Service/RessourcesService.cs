@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PiDevCRM.Service
 {
-    public class RessourcesService : Service<Resources>, IRessourcesService
+    public class RessourcesService : Service<Resources> , IRessources
     {
         static IDatabaseFactory Factory = new DatabaseFactory();
         static IUnitOfWork UTK = new UnitOfWork(Factory);
@@ -17,8 +17,8 @@ namespace PiDevCRM.Service
         {
 
         }
+
     }
 }
-
 
 

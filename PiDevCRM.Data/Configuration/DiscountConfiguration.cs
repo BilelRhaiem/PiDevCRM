@@ -15,8 +15,7 @@ namespace PiDevCRM.Data.Configuration
             HasMany(disc => disc.ListProducts)
                 .WithRequired(prod => prod.Discount)
                 .HasForeignKey(disc => disc.IdProduct);
-
-
+            
 
         }
     }

@@ -12,11 +12,8 @@ namespace PiDevCRM.Domain.Entities
     {
         [Key]
         public int IdProspection { get; set; }
-        public int? VilleId { get; set; }
         public String TypeProspection { get; set; }
         public String Location { get; set; }
-        [ForeignKey("VilleId")]
-        public virtual Ville Ville { get; set; }
         public virtual ICollection<Resources> ListResources { get; set; }
         public virtual ICollection<Agent> ListAgents { get; set; }
 

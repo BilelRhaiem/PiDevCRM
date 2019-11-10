@@ -14,10 +14,6 @@ namespace PiDevCRM.Data.Configuration
         {
             HasMany(prosp => prosp.ListResources).WithRequired(res => res.Prospection).HasForeignKey(prosp => prosp.IdResource);
             HasMany(prosp => prosp.ListAgents).WithRequired(agent => agent.Prospection).HasForeignKey(prosp => prosp.IdAgent);
-            HasRequired(prosp => prosp.Ville)
- .WithMany(post => post.ListProspection)
- .HasForeignKey(prosp => prosp.Ville)
- .WillCascadeOnDelete(true);
 
         }
     }

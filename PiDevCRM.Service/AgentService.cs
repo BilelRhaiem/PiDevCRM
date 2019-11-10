@@ -9,13 +9,15 @@ using System.Threading.Tasks;
 
 namespace PiDevCRM.Service
 {
-    public class AgentService : Service<Agent>, IServiceAgent
+   public class AgentService : Service<Agent> , IAgentService
     {
         static IDatabaseFactory Factory = new DatabaseFactory();
         static IUnitOfWork UTK = new UnitOfWork(Factory);
         public AgentService() : base(UTK)
         {
-
+                
         }
     }
 }
+
+

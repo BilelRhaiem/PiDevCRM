@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace PiDevCRM.Service
 {
-    public interface ICategoryService : IService<Category>
+    public interface ICategoryService 
     {
+      
     }
 }

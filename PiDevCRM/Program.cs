@@ -14,15 +14,11 @@ namespace PiDevCRM
         {
             Category cat1 = new Category()
             {
-                CategoryName = "Laptops"
+                CategoryName = "Portable"
             };
             Category cat2 = new Category()
             {
-                CategoryName = "Accessories"
-            };
-            Category cat3 = new Category()
-            {
-                CategoryName = "Mobiles"
+                CategoryName = "Modem"
             };
 
             PiDevCRMContexte ctx = new PiDevCRMContexte();
@@ -34,7 +30,7 @@ namespace PiDevCRM
             //{
             //    NameProduct = "samsung",
             //    Category = cat1,
-            //    ImageProduct = "myphone",
+            //    ImageProduct ="myphone",
             //    Price = 12
             //};
 

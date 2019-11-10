@@ -31,7 +31,6 @@ namespace PiDevCRM.Data
         public DbSet<Store> Store { get; set; }
         public DbSet<Client> Client { get; set; }
         public DbSet<Admin> Admin { get; set; }
-        public DbSet<Ville> Ville { get; set; }
     }
 }
 

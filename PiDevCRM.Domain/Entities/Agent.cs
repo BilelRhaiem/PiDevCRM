@@ -17,7 +17,7 @@ namespace PiDevCRM.Domain.Entities
     {
         [Key]
         public int IdAgent { get; set; }
-        public int IdProspection { get; set; }
+        public int? IdProspection { get; set; }
         public TypeAgent TypeAgent { get; set; }
         public String FirstName { get; set; }
         public String LastName { get; set; }

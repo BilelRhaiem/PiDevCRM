@@ -69,32 +69,17 @@ namespace PiDevCRM.Web.Controllers
         // GET: Agent/Edit/5
         public ActionResult Edit(int id)
         {
-            Agent pack = AS.GetById(id);
-            if (pack == null)
-            {
-                return HttpNotFound();
-            }
-            return View(pack);
+            return View(AS.GetById(id));
         }
 
         // POST: Agent/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, Agent a)
         {
-            Agent pa = AS.GetById(a.IdAgent);
-
-            pa.FirstName = a.FirstName;
-            pa.LastName = a.LastName;
-            pa.PhoneNumber = a.PhoneNumber;
-            pa.TypeAgent = a.TypeAgent;
-
-            if (ModelState.IsValid)
-            {
-                AS.Update(pa);
-                AS.Commit();
-                return RedirectToAction("Index");
-            }
-
+            // TODO: Add update logic here
+            a = AS.GetById(id);
+            AS.Update(a);
+            AS.Commit();
             return RedirectToAction("Index");
         }
 

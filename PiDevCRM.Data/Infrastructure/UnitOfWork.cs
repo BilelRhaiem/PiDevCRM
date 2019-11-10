@@ -10,7 +10,7 @@ namespace PiDevCRM.Data.Infrastructure
     public class UnitOfWork : IUnitOfWork
     {
        
-         public PiDevCRMContexte dataContext;
+         private PiDevCRMContexte dataContext;
 
         IDatabaseFactory dbFactory;
         public UnitOfWork(IDatabaseFactory dbFactory)
@@ -18,12 +18,8 @@ namespace PiDevCRM.Data.Infrastructure
             this.dbFactory = dbFactory;
             dataContext = dbFactory.DataContext;
         }
+        
 
-        public UnitOfWork()
-        {
-            //this._dataContext = new MyFinanceContext();
-            this.dbFactory = new DatabaseFactory();
-        }
 
         public void Commit()
         {

@@ -126,21 +126,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AgentController.cs" />
-    <Compile Include="Controllers\DiscountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PacksController.cs" />
-    <Compile Include="Controllers\PostesController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Controllers\ProspectionController.cs" />
-    <Compile Include="Controllers\RessourcesController.cs" />
-    <Compile Include="Controllers\StoreController.cs" />
+    <Compile Include="Controllers\ResourcesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\PostesModele.cs" />
-    <Compile Include="Models\ProductModel.cs" />
-    <Compile Include="Models\ProspectionModele.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1775,11 +1768,6 @@
     <Content Include="ContentFront\js\main.js" />
     <Content Include="ContentFront\js\nouislider.min.js" />
     <Content Include="ContentFront\js\slick.min.js" />
-    <Content Include="ContentFront\screenshot\Checkout.png" />
-    <Content Include="ContentFront\screenshot\Index.png" />
-    <Content Include="ContentFront\screenshot\Product.png" />
-    <Content Include="ContentFront\screenshot\Regular.png" />
-    <Content Include="ContentFront\screenshot\Store.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -1991,53 +1979,20 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
-    <Content Include="Views\Product\Create.cshtml" />
-    <Content Include="Views\Packs\Create.cshtml" />
-    <Content Include="Views\Packs\Index.cshtml" />
-    <Content Include="Views\Packs\Delete.cshtml" />
-    <Content Include="Views\Packs\Details.cshtml" />
-    <Content Include="Views\Discount\Create.cshtml" />
-    <Content Include="Views\Discount\Index.cshtml" />
-    <Content Include="Views\Packs\Edit.cshtml" />
-    <Content Include="Views\Product\Edit.cshtml" />
-    <Content Include="Views\Discount\Delete.cshtml" />
-    <Content Include="Views\Discount\Details.cshtml" />
-    <Content Include="Views\Product\Delete.cshtml" />
-    <Content Include="Views\firstInterface.cshtml" />
+    <Content Include="Views\Resources\Edit.cshtml" />
+    <Content Include="Views\Resources\Delete.cshtml" />
+    <Content Include="Views\Agent\Create.cshtml" />
+    <Content Include="Views\Agent\Index.cshtml" />
+    <Content Include="Views\Agent\Delete.cshtml" />
+    <Content Include="Views\Resources\Create.cshtml" />
+    <Content Include="Views\Resources\Index.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Shared\_FrontLayout.cshtml" />
-    <Content Include="Views\Discount\Edit.cshtml" />
-    <Content Include="Views\Shared\_AdminLayout2.cshtml" />
-    <Content Include="Views\Product\IndexFront.cshtml" />
-    <Content Include="Views\Store\Index.cshtml" />
-    <Content Include="Views\Store\Details.cshtml" />
-    <Content Include="Views\Store\Create.cshtml" />
-    <Content Include="Views\Store\Edit.cshtml" />
-    <Content Include="Views\Store\Delete.cshtml" />
-    <Content Include="Views\Agent\Index.cshtml" />
-    <Content Include="Views\Agent\Create.cshtml" />
-    <Content Include="Views\Agent\Delete.cshtml" />
-    <Content Include="Views\Ressources\Index.cshtml" />
-    <Content Include="Views\Ressources\Create.cshtml" />
-    <Content Include="Views\Ressources\Edit.cshtml" />
-    <Content Include="Views\Ressources\Delete.cshtml" />
-    <Content Include="Views\Prospection\Index.cshtml" />
-    <Content Include="Views\Prospection\Create.cshtml" />
-    <Content Include="Views\Prospection\Edit.cshtml" />
-    <Content Include="Views\Prospection\Delete.cshtml" />
-    <Content Include="Views\Prospection\DetailProspection.cshtml" />
-    <Content Include="Views\Agent\Edit.cshtml" />
-    <Content Include="Views\Postes\Create.cshtml" />
-    <Content Include="Views\Postes\Edit.cshtml" />
-    <Content Include="Views\Postes\Delete.cshtml" />
-    <Content Include="Views\Postes\Index.cshtml" />
-    <Content Include="Views\Postes\Details.cshtml" />
-    <Content Include="Views\Postes\AddComment.cshtml" />
-    <Content Include="Views\Prospection\Details.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\uploads\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -2053,10 +2008,6 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PiDevCRM.Data\PiDevCRM.Data.csproj">
-      <Project>{8B7B9380-7213-41AC-9C71-68418EB6E7AB}</Project>
-      <Name>PiDevCRM.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PiDevCRM.Domain\PiDevCRM.Domain.csproj">
       <Project>{1c14865c-0ce8-4743-949c-a76592ff9a2d}</Project>
       <Name>PiDevCRM.Domain</Name>

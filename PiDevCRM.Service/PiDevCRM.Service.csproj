@@ -50,29 +50,15 @@
   <ItemGroup>
     <Compile Include="AgentService.cs" />
     <Compile Include="CategoryService.cs" />
-    <Compile Include="ClientService.cs" />
-    <Compile Include="CommentService.cs" />
-    <Compile Include="DiscountService.cs" />
+    <Compile Include="IAgentService.cs" />
     <Compile Include="ICategoryService.cs" />
-    <Compile Include="IClientService.cs" />
-    <Compile Include="ICommentService.cs" />
-    <Compile Include="IDiscountService.cs" />
-    <Compile Include="IPackService.cs" />
-    <Compile Include="IPostesService.cs" />
     <Compile Include="IProductService.cs" />
     <Compile Include="IProspectionService.cs" />
-    <Compile Include="IRessourcesService.cs" />
-    <Compile Include="IServiceAgent.cs" />
-    <Compile Include="IStoreService.cs" />
-    <Compile Include="IVilleService.cs" />
-    <Compile Include="PackService.cs" />
-    <Compile Include="PostesService.cs" />
+    <Compile Include="IRessources.cs" />
     <Compile Include="ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProspectionService.cs" />
     <Compile Include="RessourcesService.cs" />
-    <Compile Include="StoreService.cs" />
-    <Compile Include="VilleService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

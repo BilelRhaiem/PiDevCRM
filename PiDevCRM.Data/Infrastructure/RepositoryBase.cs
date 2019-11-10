@@ -11,8 +11,8 @@ namespace PiDevCRM.Data.Infrastructure
 {
     public class RepositoryBase<T> : IRepositoryBase<T> where T : class
     {
-        public PiDevCRMContexte dataContext;
-        public readonly IDbSet<T> dbset;
+        private PiDevCRMContexte dataContext;
+        private readonly IDbSet<T> dbset;
         IDatabaseFactory databaseFactory;
         public RepositoryBase(IDatabaseFactory dbFactory)
         {
@@ -21,7 +21,7 @@ namespace PiDevCRM.Data.Infrastructure
 
 
         }
-        public PiDevCRMContexte DataContext
+        protected PiDevCRMContexte DataContext
         {
             get { return dataContext = databaseFactory.DataContext; }
         }

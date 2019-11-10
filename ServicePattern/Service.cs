@@ -13,30 +13,21 @@ namespace Service.Pattern
 {
     public abstract class Service<TEntity> : IService<TEntity> where TEntity : class
     {
-        public UnitOfWork utk1;
-        public IUnitOfWork utwk { get; set; }
-        public IUnitOfWork utwk1 { get; set; }
-        public IUnitOfWork ut { get; set; }
 
-        public Service(IUnitOfWork utwk)
+        IUnitOfWork utwk;
+        private IUnitOfWork utwk1;
+        private IUnitOfWork ut;
+
+        protected Service(IUnitOfWork utwk)
         {
             this.utwk = utwk;
         }
 
-
-        //public UnitOfWork utwk;
-        //public Service()
-        //{
-        //    utk1 = new UnitOfWork();
-        //    //_repository = repository;
-        //    //_repository = unitOfWork.GetRepository<T>();
-        //}
-
-        public UnitOfWork unitofwork
+        public Service()
         {
-            get { return utk1; }
         }
 
+       
 
         public virtual void Add(TEntity entity)
         {
@@ -48,11 +39,7 @@ namespace Service.Pattern
         public virtual void Update(TEntity entity)
         {
             //_repository.Update(entity);
-            //utwk.getRepository<TEntity>().Update(entity);
-
-            if (entity == null) throw new ArgumentNullException("entity");
             utwk.getRepository<TEntity>().Update(entity);
-            utwk.Commit();
         }
 
         public virtual void Delete(TEntity entity)
@@ -96,8 +83,8 @@ namespace Service.Pattern
 
         public void Commit()
         {
-
-            utwk.Commit();
+            
+                utwk.Commit();
            
             
         }

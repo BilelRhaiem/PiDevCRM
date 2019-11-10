@@ -10,7 +10,7 @@ namespace PiDevCRM.Data.Infrastructure
 {
     public class DatabaseFactory : Disposable, IDatabaseFactory
     {
-        public PiDevCRMContexte dataContext;
+        private PiDevCRMContexte dataContext;
         public PiDevCRMContexte DataContext { get { return dataContext; } }
 
         public DatabaseFactory()
