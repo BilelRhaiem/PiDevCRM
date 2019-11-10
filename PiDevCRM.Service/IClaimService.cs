@@ -10,5 +10,11 @@ namespace PiDevCRM.Service
 {
    public interface IClaimService : IService<Claims>
     {
+<<<<<<< Updated upstream
+=======
+
+       int NbrRec();
+
+>>>>>>> Stashed changes
     }
 }

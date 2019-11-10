@@ -12,16 +12,26 @@
 </p>
 <table class="table">
     <tr>
+<<<<<<< Updated upstream
         
+=======
+
+>>>>>>> Stashed changes
         <th>
             @Html.DisplayNameFor(model => model.ClaimDate)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.typeClaims)
         </th>
+<<<<<<< Updated upstream
         <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
+=======
+        @*  <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>*@
+>>>>>>> Stashed changes
         <th>
             @Html.DisplayNameFor(model => model.statustype)
         </th>
@@ -39,14 +49,21 @@
         <td>
             @Html.DisplayFor(modelItem => item.typeClaims)
         </td>
+<<<<<<< Updated upstream
         <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
+=======
+        @*  <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>*@
+>>>>>>> Stashed changes
         <td>
             @Html.DisplayFor(modelItem => item.statustype)
         </td>
         <td>
             @*@if (item.statustype.Equals("non_traite"))
+<<<<<<< Updated upstream
         {
 
             @Html.DisplayFor(modelItem => item.Answer.Equals("hhhhhhhh"))
@@ -64,6 +81,23 @@
                 @Html.ActionLink("Delete", "Delete", new { id = item.IdClaims })
             </td>
         </tr>
+=======
+            {
+
+                @Html.DisplayFor(modelItem => item.Answer.Equals("hhhhhhhh"))
+
+
+            }*@
+            @Html.DisplayFor(modelItem => item.Answer)
+        </td>
+        <td></td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.IdClaims }) |
+            @Html.ActionLink("Details", "Details", new { id = item.IdClaims }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.IdClaims })
+        </td>
+    </tr>
+>>>>>>> Stashed changes
 }
 
 </table>

@@ -17,5 +17,18 @@ namespace PiDevCRM.Service
         {
 
         }
+<<<<<<< Updated upstream
+=======
+       public int NbrRec()
+        {
+
+           //return GetAll().Where(c=>c.Description=="").Count();
+           // return GetAll().Where(c => c.statustype.Equals(0)).Count();
+            return GetAll().Count();
+
+
+        }
+
+>>>>>>> Stashed changes
     }
 }

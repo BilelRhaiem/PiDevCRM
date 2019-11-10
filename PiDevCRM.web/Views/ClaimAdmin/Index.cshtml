@@ -9,33 +9,62 @@
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
     </div>
+<<<<<<< Updated upstream
     <div class="card-body">
         @*
+=======
+
+
+
+    <div class="card-body">
+        
+       
+>>>>>>> Stashed changes
         <div class="col-sm-12 col-md-6">
             <div class="dataTables_filter" id="dataTable_filter">
                 <label>
                     Search:
+<<<<<<< Updated upstream
                     <input class="form-control form-control-sm" aria-controls="dataTable" type="search" placeholder="" />
+=======
+                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for a claim.." title="Type in a name of Claim">
+                    the total number of claims:  @Html.Display("totale")
+>>>>>>> Stashed changes
                 </label>
 
             </div>
         </div>
+<<<<<<< Updated upstream
         *@
+=======
+
+>>>>>>> Stashed changes
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <tr>
                     @*<th>
+<<<<<<< Updated upstream
                         @Html.DisplayNameFor(model => model.IdClient)
                     </th>*@
+=======
+            @Html.DisplayNameFor(model => model.IdClient)
+        </th>*@
+>>>>>>> Stashed changes
                     <th>
                         @Html.DisplayNameFor(model => model.ClaimDate)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.typeClaims)
                     </th>
+<<<<<<< Updated upstream
                     <th>
                         @Html.DisplayNameFor(model => model.Description)
                     </th>
+=======
+                    @*  <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>*@
+>>>>>>> Stashed changes
                     <th>
                         @Html.DisplayNameFor(model => model.statustype)
                     </th>
@@ -47,6 +76,7 @@
 
                 @foreach (var item in Model)
                 {
+<<<<<<< Updated upstream
                     <tr>
                         @*  <td>
                             @Html.DisplayFor(modelItem => item.IdClient)
@@ -78,6 +108,65 @@
                 }
 
             </table>
+=======
+                <tr>
+                    @*  <td>
+            @Html.DisplayFor(modelItem => item.IdClient)
+        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClaimDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.typeClaims)
+                    </td>
+                    @*  <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.statustype)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Answer)
+                    </td>
+                    <td>
+                        @*   @Html.ActionLink("Edit", "Edit", new { id = item.IdClaims }) | *@
+                        @Html.ActionLink("Details", "Details", new { id = item.IdClaims }) |
+                        @Html.ActionLink("Reply", "Reply", new { id = item.IdClaims }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.IdClaims }) |
+                        @Html.ActionLink("EmailSetup", "EmailSetup", new { id = item.IdClaims })
+
+                    </td>
+                </tr>
+                }
+
+            </table>
+            @Html.ActionLink("Dashboard", "Dashboard")
+            <script>
+
+
+                //fonction recherche par nom ajax
+                function myFunction() {
+                    var input, filter, table, tr, td, i, txtValue;
+                    input = document.getElementById("myInput");
+                    filter = input.value.toUpperCase();
+                    table = document.getElementById("dataTable");
+                    tr = table.getElementsByTagName("tr");
+                    for (i = 0; i < tr.length; i++) {
+                        td = tr[i].getElementsByTagName("td")[0];
+                        if (td) {
+                            txtValue = td.textContent || td.innerText;
+                            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                tr[i].style.display = "";
+                            } else {
+                                tr[i].style.display = "none";
+                            }
+                        }
+                    }
+                }
+
+
+            </script>
+>>>>>>> Stashed changes
         </div>
     </div>
 </div>

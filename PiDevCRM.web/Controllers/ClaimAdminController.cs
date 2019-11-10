@@ -21,6 +21,10 @@ namespace PiDevCRM.Web.Controllers
         // GET: ClaimAdmin
         public ActionResult Index()
         {
+<<<<<<< Updated upstream
+=======
+            ViewBag.totale = Cs.NbrRec();
+>>>>>>> Stashed changes
             return View(Cs.GetMany());
         }
 
@@ -163,6 +167,39 @@ namespace PiDevCRM.Web.Controllers
                 Cs.Update(c1);
                 Cs.Commit();
 
+<<<<<<< Updated upstream
+=======
+                var verifyurl = "/Signup/VerifiyAccount/";
+                var link = Request.Url.AbsolutePath.Replace(Request.Url.PathAndQuery, verifyurl);
+
+                var fromEmail = new MailAddress("maram.mtir@esprit.tn", "maram mtir");
+                var toEmail = new MailAddress("takwa.hammedi@esprit.tn");
+                var FromEmailPassword = "MaramNaceurMtir12";
+
+                string subject = "Validation Job";
+
+                string body = "Congratulations you are  assigned to work in our prospecting point " +
+                    "<br/><a href = '" + link + "'>" + link + "</a>";
+
+                var smtp = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential(fromEmail.Address, FromEmailPassword),
+                    Timeout = 20000
+                };
+                using (var message = new MailMessage(fromEmail, toEmail)
+                {
+                    Subject = subject,
+                    Body = body,
+                    IsBodyHtml = true
+
+                }) smtp.Send(message);
+
+>>>>>>> Stashed changes
                 return RedirectToAction("Index");
 
             }
@@ -170,6 +207,27 @@ namespace PiDevCRM.Web.Controllers
             return RedirectToAction("Index");
         }
 
+<<<<<<< Updated upstream
+=======
+        public ActionResult Dashboard()
+        {
+            var list = Cs.GetAll();
+            List<int> repartitions = new List<int>();
+            var typeC = list.Select(x => x.typeClaims).Distinct();
+
+            foreach(var item in typeC)
+            {
+                repartitions.Add(list.Count(x => x.typeClaims == item));
+
+            }
+            var rep = repartitions;
+            ViewBag.TYPEC = typeC;
+            ViewBag.REP = repartitions.ToList();
+
+            return View();
+        }
+
+>>>>>>> Stashed changes
 
     }
 }

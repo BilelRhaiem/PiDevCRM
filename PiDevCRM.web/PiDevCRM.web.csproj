@@ -1957,6 +1957,11 @@
     <Content Include="ContentFront\fonts\slick.eot" />
     <Content Include="ContentFront\fonts\slick.ttf" />
     <Content Include="ContentFront\fonts\slick.woff" />
+<<<<<<< Updated upstream
+=======
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\Chart.min.js" />
+>>>>>>> Stashed changes
     <Content Include="Scripts\ckeditor\CHANGES.md" />
     <Content Include="Scripts\ckeditor\LICENSE.md" />
     <Content Include="Scripts\ckeditor\plugins\scayt\CHANGELOG.md" />
@@ -2333,6 +2338,10 @@
     <Content Include="Views\Shared\_AdminLayoutC.cshtml" />
     <Content Include="Views\Claim\Details.cshtml" />
     <Content Include="Views\ClaimAdmin\Details.cshtml" />
+<<<<<<< Updated upstream
+=======
+    <Content Include="Views\ClaimAdmin\Dashboard.cshtml" />
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
