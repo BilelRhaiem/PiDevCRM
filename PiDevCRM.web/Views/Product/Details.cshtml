@@ -1,0 +1,97 @@
+﻿@model PiDevCRM.Domain.Entities.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout2.cshtml";
+}
+<!DOCTYPE html>
+<!-- Custom fonts for this template -->
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="css/sb-admin-2.min.css" rel="stylesheet">
+<!-- Custom styles for this page -->
+<link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .btn {
+        background-color: DodgerBlue;
+        border: none;
+        color: white;
+        padding: 12px 30px;
+        cursor: pointer;
+        font-size: 20px;
+    }
+
+        /* Darker background on mouse-over */
+        .btn:hover {
+            background-color: RoyalBlue;
+        }
+</style>
+<body>
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">details des Produits</h1>
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Produits</h6>
+            </div>
+
+            <div class="card-body">
+                <div id="Grid">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+                            <thead>
+                                <tr>
+                                <tr role="row">
+
+                                <tr>
+                                    <th>@Html.DisplayNameFor(model => model.NameProduct)</th>
+
+                                    <th>@Html.DisplayNameFor(model => model.Quantity)</th>
+
+                                    <th>@Html.DisplayNameFor(model => model.Description)</th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Price)
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayFor(model => model.NameProduct)</td>
+                                    <td>@Html.DisplayFor(model => model.Quantity)</td>
+                                    <td>@Html.DisplayFor(model => model.Description)</td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Price)
+                                    </td>
+                                </tr>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.IdProduct }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+            @using (Html.BeginForm("Export", "Product" +
+                   "", FormMethod.Post))
+            {
+                <input type="hidden" name="GridHtml" />
+                <i class="fa fa-download">
+                    <input type="submit" class="btn" id="btnSubmit" value="Export" />
+            </i>
+                    
+            }
+            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+            <script type="text/javascript">
+                $(function () {
+                    $("#btnSubmit").click(function () {
+                        $("input[name='GridHtml']").val($("#Grid").html());
+                    });
+                });
+            </script>
+</body>
+</html>

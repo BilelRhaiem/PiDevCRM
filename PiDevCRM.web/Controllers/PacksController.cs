@@ -1,7 +1,9 @@
 ﻿using PiDevCRM.Domain.Entities;
 using PiDevCRM.Service;
+using PiDevCRM.Web.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -14,6 +16,7 @@ namespace PiDevCRM.Web.Controllers
 
         public PackService PaS;
         public ProductService ps;
+
         public PacksController()
         {
             PaS = new PackService();
@@ -23,41 +26,68 @@ namespace PiDevCRM.Web.Controllers
         public ActionResult Index()
         {
             return View(PaS.GetAll());
-            
+
         }
 
-        // GET: Packs/Details/5
-        
-        public ActionResult Details(int id)
+        public ActionResult IndexFrontPAck()
         {
-           
-            if(id == null)
-    {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Pack pack = PaS.GetById(id);
-            if (pack == null)
-            {
-                return HttpNotFound();
-            }
-            return View(pack);
+            return View(PaS.GetAll());
+
         }
+
+        public ActionResult IndexPacksProds()
+        {
+            return View("~/Views/PackProducts/Index.cshtml");
+
+        }
+
+        //public ActionResult DetailsPack(int idpack)
+        //{
+        //    var ProductList = ps.GetProductByPackId(idpack);
+        //    ViewBag.Products = new SelectList(ProductList, "IdProduct", "NameProduct");
+        //    return View();
+        //}
+
+        //public ActionResult Details(int id)
+        //{
+
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Pack pack = PaS.GetById(id);
+        //    ps.GetProductByPack(pack);
+
+        //    if (pack == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+
+        //    return RedirectToAction("Index1", "Product");
+        //}
 
         // GET: Packs/Create
         public ActionResult Create()
         {
-            var ProductList = ps.GetAll();      
-           ViewBag.Products = new SelectList(ProductList, "IdProduct", "NameProduct");
-           
+            var ProductList = ps.GetAll();
+            ViewBag.Products = new SelectList(ProductList, "IdProduct", "NameProduct");
+
             return View();
         }
 
         // POST: Packs/Create
         [HttpPost]
-        public ActionResult Create(Pack pack)
+        public ActionResult Create(Pack pack, HttpPostedFileBase file)
         {
             try
             {
+                pack.PackImage = file.FileName;
+                var fileName = "";
+                if (file.ContentLength > 0)
+                {
+                    var path = Path.Combine(Server.MapPath("~/Content/uploads/"), file.FileName);
+                    file.SaveAs(path);
+                }
                 PaS.Add(pack);
                 PaS.Commit();
 
@@ -76,7 +106,7 @@ namespace PiDevCRM.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pack pack =  PaS.GetById(id);
+            Pack pack = PaS.GetById(id);
             if (pack == null)
             {
                 return HttpNotFound();
@@ -94,7 +124,8 @@ namespace PiDevCRM.Web.Controllers
             Pack pa = PaS.GetById(p.IdPack);
 
             pa.PackName = p.PackName;
-            
+            pa.PackPrice = p.PackPrice;
+
             if (ModelState.IsValid)
             {
                 PaS.Update(pa);
@@ -104,25 +135,10 @@ namespace PiDevCRM.Web.Controllers
 
             return View();
 
-
-            //try
-            //{
-
-
-            //    p = PaS.GetById(id);
-
-            //    PaS.Update(p);
-            //    PaS.Commit();
-            //    return RedirectToAction("Index");
-            //}
-            //catch
-            //{
-            //    return View();
-            //}
         }
 
         // GET: Packs/Delete/5
-        
+
         public ActionResult Delete(int id)
         {
 

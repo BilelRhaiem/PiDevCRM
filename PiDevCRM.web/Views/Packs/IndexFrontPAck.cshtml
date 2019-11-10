@@ -1,8 +1,9 @@
-﻿@model IEnumerable<PiDevCRM.Domain.Entities.Store>
+﻿@model IEnumerable<PiDevCRM.Domain.Entities.Pack>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "View";
     Layout = "~/Views/Shared/_FrontLayout.cshtml";
+
 }
 
 <head>
@@ -49,8 +50,8 @@
 
             <ul class="main-nav nav navbar-nav">
                 <li>@Html.ActionLink("Home", "IndexFront", "Product") </li>
-                <li>@Html.ActionLink("Hot Deals", "IndexFrontPAck", "Product")</li>
-                <li class="active">@Html.ActionLink("Store", "Index", "Store")</li>
+                <li class="active">@Html.ActionLink("Hot Deals", "IndexFrontPAck", "Product")</li>
+                <li>@Html.ActionLink("Store", "Index", "Store")</li>
             </ul>
 
         </div>
@@ -58,6 +59,7 @@
     </div>
 
 </nav>
+
 
 
 <div class="section">
@@ -68,11 +70,17 @@
 
             <div class="col-md-12">
                 <div class="section-title">
-                    <h3 class="title">Boutiques</h3>
-
-
+                    <h3 class="title">HoT Deals</h3>
+                    <div class="section-nav">
+                        <ul class="section-tab-nav tab-nav"></ul>
+                    </div>
                 </div>
             </div>
+
+
+
+            @*@RenderBody()*@
+
 
             <div class="col-md-12">
                 <div class="row">
@@ -83,14 +91,16 @@
                                 @foreach (var item in Model)
                                 {
                                     <div class="product">
-
+                                        <div class="product-img">
+                                            @{ string path = "~/Content/uploads/" + @item.PackImage;}
+                                            <img src="@Url.Content(path)" alt="" height="200" width="60" />
+                                            <div class="product-label">
+                                                @*<span class="sale"></span>*@
+                                                <span class="new">NEW</span>
+                                            </div>
+                                        </div>
                                         <div class="product-body">
-                                            <p class="product-category">@Html.DisplayFor(modelItem => item.NameStore)</p>
-                                            <h3 class="product-name"><a href="#">@Html.DisplayFor(modelItem => item.Adresse)</a></h3>
-                                            <h4 class="product-price">@Html.DisplayFor(modelItem => item.Email)</h4>
-                                           
-                                            <h4 class="product-price">@Html.DisplayFor(modelItem => item.ouverture)</h4>
-
+                                            <p class="product-category">@Html.DisplayFor(modelItem => item.PackName)</p>
 
                                             <div class="product-rating">
                                                 <i class="fa fa-star"></i>
@@ -99,9 +109,10 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-
                                         </div>
-
+                                        <div class="add-to-cart">
+                                            <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                        </div>
                                     </div>
 
                                 }
@@ -112,18 +123,52 @@
                     </div>
                 </div>
             </div>
-               
 
         </div>
-        
 
-
+    </div>
 
 </div>
 
+<div id="hot-deal" class="section">
 
+    <div class="container">
 
+        <div class="row">
+            <div class="col-md-12">
+                <div class="hot-deal">
+                    <ul class="hot-deal-countdown">
+                        <li>
+                            <div>
+                                <h3>20%</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <h3>30%</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <h3>40%</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <h3>50%</h3>
+                            </div>
+                        </li>
+                    </ul>
+                    <h2 class="text-uppercase">hot deal this week</h2>
+                    <p>New Collection Up to 50% OFF</p>
+                    <a>@Html.ActionLink("Shop Now", "IndexFrontPAck", "Product")</a>
+                </div>
+            </div>
+        </div>
 
+    </div>
+
+</div>
 
 
 
@@ -134,5 +179,3 @@
 <script src="~/ContentFront/js/nouislider.min.js"></script>
 <script src="~/ContentFront/js/jquery.zoom.min.js"></script>
 <script src="~/ContentFront/js/main.js"></script>
-
-

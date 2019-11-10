@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PiDevCRM.Domain.Entities
 {
-    
+
     public class Pack
     {
         [Key]
@@ -21,6 +21,8 @@ namespace PiDevCRM.Domain.Entities
         [ForeignKey("IdProduct")]
         public virtual Product Product { get; set; }
         public string PackName { get; set; }
+        public float PackPrice { get; set; }
+        public String PackImage { get; set; }
         public virtual ICollection<Product> ListProducts { get; set; }
 
     }

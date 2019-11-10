@@ -93,6 +93,14 @@
     <Compile Include="Migrations\201911081742482_bil.Designer.cs">
       <DependentUpon>201911081742482_bil.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911091142264_pack.cs" />
+    <Compile Include="Migrations\201911091142264_pack.Designer.cs">
+      <DependentUpon>201911091142264_pack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911091153164_prod.cs" />
+    <Compile Include="Migrations\201911091153164_prod.Designer.cs">
+      <DependentUpon>201911091153164_prod.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PiDevCRMContexte.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -121,6 +129,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911081742482_bil.resx">
       <DependentUpon>201911081742482_bil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911091142264_pack.resx">
+      <DependentUpon>201911091142264_pack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911091153164_prod.resx">
+      <DependentUpon>201911091153164_prod.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

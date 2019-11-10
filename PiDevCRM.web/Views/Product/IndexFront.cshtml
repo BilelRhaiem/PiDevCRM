@@ -49,10 +49,9 @@
         <div id="responsive-nav">
 
             <ul class="main-nav nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Hot Deals</a></li>
-                <li><a href="#">Categories</a></li>
-                <li>@Html.ActionLink("Store","Index","Store")</li>
+                <li class="active">@Html.ActionLink("Home", "IndexFront", "Product") </li>
+                <li>@Html.ActionLink("Hot Deals", "IndexFrontPAck", "Product")</li>
+                <li>@Html.ActionLink("Store", "Index", "Store")</li>
             </ul>
 
         </div>
@@ -84,7 +83,7 @@
 
 
 
-
+            @*@RenderBody()*@
 
 
             <div class="col-md-12">
@@ -95,56 +94,64 @@
                             <div class="products-slick" data-nav="#slick-nav-1">
                                 @foreach (var item in Model)
                                 {
-                                <div class="product">
-                                    <div class="product-img">
-                                        @{ string path = "~/Content/uploads/" + @item.ImageProduct;}
-                                        <img src="@Url.Content(path)" alt="" height="200" width="60" />
-                                        <div class="product-label">
-                                            @*<span class="sale"></span>*@
-                                            <span class="new">NEW</span>
+                                    <div class="product">
+                                        <div class="product-img">
+                                            @{ string path = "~/Content/uploads/" + @item.ImageProduct;}
+                                            <img src="@Url.Content(path)" alt="" height="200" width="60" />
+                                            <div class="product-label">
+                                                @*<span class="sale"></span>*@
+                                                <span class="new">NEW</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">@Html.DisplayFor(modelItem => item.Category.CategoryName)</p>
-                                        <h3 class="product-name"><a href="#">@Html.DisplayFor(modelItem => item.NameProduct)</a></h3>
-                                        <h4 class="product-price">@Html.DisplayFor(modelItem => item.Price)</h4>
-                                        @if (item.IdDiscount != null)
-                                        {
-                                            <h4 class="product-price">
-                                                Discount:
-                                                <h3 class="product-name"> @Html.DisplayFor(modelItem => item.Discount.Pourcentage)</h3>
+                                        <div class="product-body">
+                                            <p class="product-category">@Html.DisplayFor(modelItem => item.Category.CategoryName)</p>
+                                            <h3 class="product-name"><a href="#">@Html.DisplayFor(modelItem => item.NameProduct)</a></h3>
+                                            <h4 class="product-price">@Html.DisplayFor(modelItem => item.Price) DT</h4>
+                                            @if (item.IdDiscount != null)
+                                            {
+                                                if (item.Discount.EndDate > DateTime.Now)
+                                                {
+                                                    <h4 class="product-price">
+                                                        Discount:
+                                                        <h3 class="product-name"> @Html.DisplayFor(modelItem => item.Discount.Pourcentage)</h3>
+                                                    </h4>
+                                                }
+                                            }
+                                            <h4 class="product-name">
+                                                @*@Html.DisplayFor(modelItem => item.Availability)*@
+                                                @if (item.IdStock != null)
+                                                {
+                                                    <p>In_Stock</p>
+                                                }
+                                                @if (item.IdStock == null)
+                                                {
+                                                    <p>Out_Of_Stock</p>
+                                                }
+
                                             </h4>
-                                        }
-                                        <h4 class="product-price">
-                                            @Html.DisplayFor(modelItem => item.Availability)
-                                        </h4>
-                                        <div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
+                                            <div class="product-rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            
                                         </div>
-                                        <div class="product-btns">
-                                            <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                            <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                                            <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">@Html.ActionLink("Details", "Details", new { id = item.IdProduct })</span></button>
-                                       
+                                        <div class="add-to-cart">
+                                            <button class="add-to-cart-btn">
+                                                @if (item.IdStock != null)
+                                                {
+                                                    <i class="fa fa-shopping-cart"></i>@Html.ActionLink("Add to cart", "EditCart", new { id = item.IdProduct })
+                                                }
+                                                @if (item.IdStock == null)
+                                                {
+                                                    <i class="fa fa-shopping-cart"></i><span>Add to cart</span>
 
-
+                                                }
+                                            </button>
                                         </div>
                                     </div>
-                                   
-
-
-
-
-
-
-                                    <div class="add-to-cart">
-                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                                    </div>
-                                </div>
 
                                 }
                             </div>
@@ -171,32 +178,28 @@
                     <ul class="hot-deal-countdown">
                         <li>
                             <div>
-                                <h3>02</h3>
-                                <span>Days</span>
+                                <h3>20%</h3>
                             </div>
                         </li>
                         <li>
                             <div>
-                                <h3>10</h3>
-                                <span>Hours</span>
+                                <h3>30%</h3>
                             </div>
                         </li>
                         <li>
                             <div>
-                                <h3>34</h3>
-                                <span>Mins</span>
+                                <h3>40%</h3>
                             </div>
                         </li>
                         <li>
                             <div>
-                                <h3>60</h3>
-                                <span>Secs</span>
+                                <h3>50%</h3>
                             </div>
                         </li>
                     </ul>
                     <h2 class="text-uppercase">hot deal this week</h2>
                     <p>New Collection Up to 50% OFF</p>
-                    <a class="primary-btn cta-btn" href="#">Shop now</a>
+                    <a>@Html.ActionLink("Shop Now", "IndexFrontPAck", "Product")</a>
                 </div>
             </div>
         </div>
@@ -204,6 +207,8 @@
     </div>
 
 </div>
+
+
 
 
 

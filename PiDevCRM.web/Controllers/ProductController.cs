@@ -34,8 +34,21 @@ namespace PiDevCRM.Web.Controllers
             Pas = new PackService();
             sto = new StockService();
         }
-      
 
+        public ActionResult Dashboard() {
+            var list = PS.GetAll();
+            List<int> repartitions = new List<int>();
+            var prices = list.Select(x=>x.Category.CategoryName);
+            foreach (var item in prices)
+            {
+                repartitions.Add(list.Count(x=>x.Category.CategoryName == item));
+            }
+            var rep = repartitions;
+            ViewBag.PRICES = prices;
+            ViewBag.REP = repartitions.ToList();
+
+            return View();
+        }
 
 
 
@@ -84,14 +97,47 @@ namespace PiDevCRM.Web.Controllers
             }
         }
 
+        public ActionResult IndexFrontPAck() {
+            return View(Pas.GetAll());
+        }
 
 
 
 
 
 
+        public ActionResult EditCart(int id)
+        {
+            Product Prod = PS.GetById(id);
 
 
+            if (Prod == null)
+            {
+
+                return HttpNotFound();
+            }
+            return View(Prod);
+        }
+
+        [HttpPost]
+        public ActionResult EditCart(Product p)
+        {
+
+            Product prod = PS.GetById(p.IdProduct);
+
+            prod.NameProduct = p.NameProduct;
+            prod.Price = p.Price;
+            prod.IdDiscount = p.IdDiscount;
+            if (ModelState.IsValid)
+            {
+
+                PS.Add(prod);
+                PS.Commit();
+                return RedirectToAction("Index");
+            }
+
+            return View();
+        }
 
 
 
@@ -139,7 +185,14 @@ namespace PiDevCRM.Web.Controllers
         // GET: Product/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            if (id == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product prod = PS.GetById(id);
+            if (prod == null) {
+                return HttpNotFound();
+            }
+            return View(prod);
         }
 
         // GET: Product/Create
@@ -173,6 +226,8 @@ namespace PiDevCRM.Web.Controllers
                 }
                 PS.Add(product);
                 PS.Commit();
+
+
 
                 return RedirectToAction("Index");
             }

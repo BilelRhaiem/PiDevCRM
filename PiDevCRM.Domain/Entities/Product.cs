@@ -14,7 +14,7 @@ namespace PiDevCRM.Domain.Entities
         [Key]
         public int IdProduct { get; set; }
         public String NameProduct { get; set; }
-        
+        public int Quantity { get; set; }
         public String Description { get; set; }
         public float Price { get; set; }
         public String ImageProduct { get; set; }
