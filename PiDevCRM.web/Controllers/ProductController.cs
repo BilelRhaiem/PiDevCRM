@@ -10,6 +10,10 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Rotativa;
+using Rotativa.MVC;
+using PagedList;
+using PagedList.Mvc;
 
 
 namespace PiDevCRM.Web.Controllers
@@ -50,26 +54,16 @@ namespace PiDevCRM.Web.Controllers
             return View();
         }
 
-
-
-
-
-
-
-
-
-
-
-
         // GET: Product
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             //Product p = new Product();
             //if (p.IdDiscount == null)
             //{
             //    p.Price = p.Price * p.Discount.Pourcentage;
             //}
-            return View(PS.ListProdTrie());
+            return View(PS.ListProdTrie().ToPagedList(page ?? 1,5));
+
         }
         public ActionResult Indexpdf()
         {
@@ -97,16 +91,24 @@ namespace PiDevCRM.Web.Controllers
             }
         }
 
+      
+
         public ActionResult IndexFrontPAck() {
             return View(Pas.GetAll());
         }
 
 
+        public ActionResult PDF()
+        {
+            return new ActionAsPdf("Index")
+            {
+                FileName = Server.MapPath("~/Content/CRM.Pdf")
+            };
+    }
 
 
 
-
-        public ActionResult EditCart(int id)
+    public ActionResult EditCart(int id)
         {
             Product Prod = PS.GetById(id);
 

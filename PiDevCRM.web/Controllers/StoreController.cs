@@ -3,6 +3,8 @@ using PiDevCRM.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 
@@ -66,6 +68,36 @@ namespace PiDevCRM.Web.Controllers
         {
             SS.Add(s);
             SS.Commit();
+            var verifyurl = "/Signup/VerifiyAccount/";
+            var link = Request.Url.AbsolutePath.Replace(Request.Url.PathAndQuery, verifyurl);
+
+            var fromEmail = new MailAddress("manel.khamassi@esprit.tn", "khamassi manel");
+            var toEmail = new MailAddress("manel.khamassi@esprit.tn");
+            var FromEmailPassword = "183JFT0873";
+
+            string subject = "New Store is opening soon";
+
+            string body = "dear client saty tuned a store is openning in few days !! " +
+                "<br/><a href = '" + link + "'>" + link + "</a>";
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromEmail.Address, FromEmailPassword),
+                Timeout = 20000
+            };
+            using (var message = new MailMessage(fromEmail, toEmail)
+            {
+                Subject = subject,
+                Body = body,
+                IsBodyHtml = true
+
+            }) smtp.Send(message);
+
             return RedirectToAction("IndexBack");
         }
 
