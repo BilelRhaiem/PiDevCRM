@@ -18,6 +18,8 @@
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.PackName)</th>
                     <th>@Html.DisplayNameFor(model => model.PackPrice)</th>
+                    <th>@Html.DisplayNameFor(model => model.Availability)</th>
+                    <th>Pack Status</th>
                     <th></th>
                 </tr>
             </thead>
@@ -29,8 +31,25 @@
                         @Html.DisplayFor(modelItem => item.PackName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.PackPrice)
+                        @Html.DisplayFor(modelItem => item.PackPrice) DT
                     </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Availability)
+                    </td>
+                    @if (item.Availability == true)
+                    {
+                        <td>
+                            <p>Posted</p>
+                        </td>
+                    }
+
+                    @if (item.Availability == false)
+                    {
+                        <td>
+                            <p>Pack is empty</p>
+                        </td>
+                    }
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.IdPack }) |
                         @*@Html.ActionLink("Details", "Details", new { id = item.IdPack }) |*@

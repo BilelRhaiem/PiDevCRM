@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 
@@ -91,6 +92,36 @@ namespace PiDevCRM.Web.Controllers
                 PaS.Add(pack);
                 PaS.Commit();
 
+                var verifyurl = "/Signup/VerifiyAccount/";
+                var link = Request.Url.AbsolutePath.Replace(Request.Url.PathAndQuery, verifyurl);
+
+                var fromEmail = new MailAddress("mohamedamine.elhaddad@esprit.tn", "Mohamed Amine Elhaddad");
+                var toEmail = new MailAddress("takwa.hammedi@esprit.tn");
+                var FromEmailPassword = "183JMT0057";
+
+                string subject = "New hot deals soon";
+
+                string body = "Stay tunned ! new hot deals are comming soon! be the first to check them out! " +
+                    "<br/><a href = '" + link + "'>" + link + "</a>";
+
+                var smtp = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential(fromEmail.Address, FromEmailPassword),
+                    Timeout = 20000
+                };
+                using (var message = new MailMessage(fromEmail, toEmail)
+                {
+                    Subject = subject,
+                    Body = body,
+                    IsBodyHtml = true
+
+                }) smtp.Send(message);
+
                 return RedirectToAction("Index");
             }
             catch
@@ -125,6 +156,9 @@ namespace PiDevCRM.Web.Controllers
 
             pa.PackName = p.PackName;
             pa.PackPrice = p.PackPrice;
+            pa.StartDate = p.StartDate;
+            pa.EndDate = p.EndDate;
+            pa.Availability = p.Availability;
 
             if (ModelState.IsValid)
             {
@@ -164,6 +198,41 @@ namespace PiDevCRM.Web.Controllers
             PaS.Commit();
             return RedirectToAction("Index");
 
+        }
+
+
+        public ActionResult EditCart(int id)
+        {
+            Pack Prod = PaS.GetById(id);
+
+
+            if (Prod == null)
+            {
+
+                return HttpNotFound();
+            }
+            return View(Prod);
+        }
+
+        [HttpPost]
+        public ActionResult EditCart(Pack p)
+        {
+
+            Pack prod = PaS.GetById(p.IdPack);
+
+            prod.PackName = p.PackName;
+            prod.PackPrice = p.PackPrice;
+           
+            if (ModelState.IsValid)
+            {
+
+                //PS.Add(prod);
+                //PS.Commit();
+                //ViewBag.Message = "Added to cart... Do you want to buy now?";
+                return RedirectToAction("IndexFront");
+            }
+
+            return View();
         }
     }
 }

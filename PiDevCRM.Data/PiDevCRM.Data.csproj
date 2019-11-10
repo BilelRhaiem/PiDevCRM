@@ -111,6 +111,10 @@
     <Compile Include="Migrations\201911081905180_qi.Designer.cs">
       <DependentUpon>201911081905180_qi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911101426044_packdate.cs" />
+    <Compile Include="Migrations\201911101426044_packdate.Designer.cs">
+      <DependentUpon>201911101426044_packdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PiDevCRMContexte.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -157,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911081905180_qi.resx">
       <DependentUpon>201911081905180_qi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911101426044_packdate.resx">
+      <DependentUpon>201911101426044_packdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

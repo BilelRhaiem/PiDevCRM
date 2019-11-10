@@ -11,9 +11,9 @@
 </p>
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.IdClient)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Quantity)
         </th>
@@ -21,19 +21,19 @@
             @Html.DisplayNameFor(model => model.TotalPrice)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IdProduct)
+            @Html.DisplayNameFor(model => model.Product)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.IdPack)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.IdClient)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.Quantity)
         </td>
@@ -41,14 +41,14 @@
             @Html.DisplayFor(modelItem => item.TotalPrice)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IdProduct)
+            @Html.DisplayFor(modelItem => item.Product.NameProduct)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.IdPack)
-        </td>
+        </td>*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.IdCart }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdCart }) |
+            @*@Html.ActionLink("Details", "Details", new { id=item.IdCart }) |*@
             @Html.ActionLink("Delete", "Delete", new { id=item.IdCart })
         </td>
     </tr>

@@ -92,31 +92,52 @@
                             <div class="products-slick" data-nav="#slick-nav-1">
                                 @foreach (var item in Model)
                                 {
-                                    <div class="product">
-                                        <div class="product-img">
-                                            @{ string path = "~/Content/uploads/" + @item.PackImage;}
-                                            <img src="@Url.Content(path)" alt="" height="200" width="60" />
-                                            <div class="product-label">
-                                                @*<span class="sale"></span>*@
-                                                <span class="new">NEW</span>
+                                    if (item.Availability == true)
+                                    {
+                                        if (item.EndDate > DateTime.Now)
+                                        {
+                                            <div class="product">
+                                                <div class="product-img">
+                                                    @{ string path = "~/Content/uploads/" + @item.PackImage;}
+                                                    <img src="@Url.Content(path)" alt="" height="200" width="60" />
+                                                    <div class="product-label">
+                                                        @*<span class="sale"></span>*@
+                                                        <span class="new">NEW</span>
+                                                    </div>
+                                                </div>
+                                                <div class="product-body">
+                                                    <p class="product-category">@Html.DisplayFor(modelItem => item.PackName)</p>
+                                                    <h4 class="product-price">@Html.DisplayFor(modelItem => item.PackPrice) DT</h4>
+                                                    @if (item.EndDate > DateTime.Now)
+                                                    {
+                                                        <h4 class="product-price">
+                                                            <h3 class="product-name">From @Html.DisplayFor(modelItem => item.StartDate) to @Html.DisplayFor(modelItem => item.EndDate)</h3>
+                                                        </h4>
+                                                    }
+                                                    <div class="product-rating">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="add-to-cart">
+                                                    <button class="add-to-cart-btn">
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                        @if (item.EndDate > DateTime.Now)
+                                                        {
+                                                            <i class="fa fa-shopping-cart"></i>@Html.ActionLink("Add to cart", "EditCartPack", new { id = item.IdPack })
+                                                        }
+                                                        @if (item.EndDate < DateTime.Now)
+                                                        {
+                                                            <i class="fa fa-shopping-cart"></i><span>Add to cart</span>
+                                                        }
+                                                    </button>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="product-body">
-                                            <p class="product-category">@Html.DisplayFor(modelItem => item.PackName)</p>
-                                           
-                                            <div class="product-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>                                         
-                                        </div>
-                                        <div class="add-to-cart">
-                                            <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                                        </div>
-                                    </div>
-
+                                        }
+                                    }
                                 }
                             </div>
                             <div id="slick-nav-1" class="products-slick-nav"></div>

@@ -227,9 +227,10 @@ namespace PiDevCRM.Web.Controllers
             if (ModelState.IsValid)
             {
 
-                PS.Add(prod);
-                PS.Commit();
-                return RedirectToAction("Index");
+                //PS.Add(prod);
+                //PS.Commit();
+                //ViewBag.Message = "Added to cart... Do you want to buy now?";
+                return RedirectToAction("IndexFront");
             }
 
             return View();
@@ -262,6 +263,57 @@ namespace PiDevCRM.Web.Controllers
 
         }
 
-        
+
+        public ActionResult EditCartPack(int id)
+        {
+            Pack Prod = Pas.GetById(id);
+
+
+            if (Prod == null)
+            {
+
+                return HttpNotFound();
+            }
+            return View(Prod);
+        }
+
+        [HttpPost]
+        public ActionResult EditCartPack(Pack p)
+        {
+
+            Pack prod = Pas.GetById(p.IdPack);
+
+            prod.PackName = p.PackName;
+            prod.PackPrice = p.PackPrice;
+
+            if (ModelState.IsValid)
+            {
+
+                //PS.Add(prod);
+                //PS.Commit();
+                //ViewBag.Message = "Added to cart... Do you want to buy now?";
+                return RedirectToAction("IndexFront");
+            }
+
+            return View();
+        }
+    
+
+    public ActionResult Dashboard()
+        {
+            var list = PS.GetAll();
+            List<int> repartitions = new List<int>();
+            var prices = list.Select(x => x.Price).Distinct();
+            foreach (var item in prices)
+            {
+                repartitions.Add(list.Count(x => x.Price == item));
+            }
+            var rep = repartitions;
+            ViewBag.PRICES = prices;
+            ViewBag.REP = repartitions.ToList();
+
+            return View();
+        }
+
     }
 }

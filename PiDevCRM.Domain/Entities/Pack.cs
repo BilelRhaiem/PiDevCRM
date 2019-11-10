@@ -24,6 +24,10 @@ namespace PiDevCRM.Domain.Entities
         public float PackPrice { get; set; }
         public String PackImage { get; set; }
         public virtual ICollection<Product> ListProducts { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime StartDate { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime EndDate { get; set; }
 
     }
 }

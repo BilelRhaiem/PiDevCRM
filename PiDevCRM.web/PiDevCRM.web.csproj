@@ -2032,6 +2032,9 @@
     <Content Include="Views\PackProducts\CartIndex.cshtml" />
     <Content Include="Views\Product\IndexFrontPAck.cshtml" />
     <Content Include="Views\Product\EditCart.cshtml" />
+    <Content Include="Views\Product\Dashboard.cshtml" />
+    <Content Include="Views\Packs\EditCart.cshtml" />
+    <Content Include="Views\Product\EditCartPack.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

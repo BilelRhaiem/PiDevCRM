@@ -1,0 +1,56 @@
+﻿@model IEnumerable<PiDevCRM.Domain.Entities.Product>
+
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_AdminLayout2.cshtml";
+}
+<html>
+<head>
+    <script src="~/Scripts/Chart.min.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        #chart_container {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #ddd;
+            padding: 1px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div id="chart_container">
+        <canvas id="bar_chart"></canvas>
+        <script>
+        var repArray =@Html.Raw(Json.Encode(ViewBag.REP));
+        var prices =@Html.Raw(Json.Encode(ViewBag.PRICES));
+        var ctx = $("#bar_chart");
+        var bacChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: prices,
+                datasets: [{
+                    label: "BAR CHART OF PRODUCTS",
+                    data: repArray,
+                    backgroundColor: ["rgba(242,166,54,.5)", "rgba(145,65,72,.5)", "(74,25,92,.5)"],
+                    borderColor: ["rgb(242,166,54)", "rgb(145,65,62)", "rgb(74,25,92)"],
+                    borderWidth:1
+                }
+                ]
+            },
+            options: {
+                maintainAspectRation: false,
+                scales: { xAxes: [{ ticks: { beginZero: true } }] },
+                legend: { display: false },
+            }
+
+
+        });
+
+        </script>
+
+    </div>
+</body>
+</html>
