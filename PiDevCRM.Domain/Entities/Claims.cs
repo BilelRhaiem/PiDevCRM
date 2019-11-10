@@ -11,7 +11,11 @@ namespace PiDevCRM.Domain.Entities
 {
     public enum TypeClaims { Branche_technique, Branche_financière, Branche_relationnelle };
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     public enum Status { non_traite , traite, en_cours };
+=======
+    public enum Status {non_traite , traite, en_cours };
+>>>>>>> Stashed changes
 =======
     public enum Status {non_traite , traite, en_cours };
 >>>>>>> Stashed changes

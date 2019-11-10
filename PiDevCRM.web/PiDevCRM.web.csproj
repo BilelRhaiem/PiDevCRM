@@ -1958,6 +1958,11 @@
     <Content Include="ContentFront\fonts\slick.ttf" />
     <Content Include="ContentFront\fonts\slick.woff" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\Chart.min.js" />
+>>>>>>> Stashed changes
 =======
     <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\Chart.min.js" />
@@ -2339,6 +2344,10 @@
     <Content Include="Views\Claim\Details.cshtml" />
     <Content Include="Views\ClaimAdmin\Details.cshtml" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+    <Content Include="Views\ClaimAdmin\Dashboard.cshtml" />
+>>>>>>> Stashed changes
 =======
     <Content Include="Views\ClaimAdmin\Dashboard.cshtml" />
 >>>>>>> Stashed changes

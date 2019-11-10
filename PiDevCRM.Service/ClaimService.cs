@@ -18,7 +18,10 @@ namespace PiDevCRM.Service
 
         }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
        public int NbrRec()
         {
 
@@ -29,6 +32,9 @@ namespace PiDevCRM.Service
 
         }
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     }
 }

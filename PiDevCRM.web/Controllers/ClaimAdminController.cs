@@ -22,6 +22,10 @@ namespace PiDevCRM.Web.Controllers
         public ActionResult Index()
         {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+            ViewBag.totale = Cs.NbrRec();
+>>>>>>> Stashed changes
 =======
             ViewBag.totale = Cs.NbrRec();
 >>>>>>> Stashed changes
@@ -168,7 +172,10 @@ namespace PiDevCRM.Web.Controllers
                 Cs.Commit();
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
                 var verifyurl = "/Signup/VerifiyAccount/";
                 var link = Request.Url.AbsolutePath.Replace(Request.Url.PathAndQuery, verifyurl);
 
@@ -199,6 +206,9 @@ namespace PiDevCRM.Web.Controllers
 
                 }) smtp.Send(message);
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                 return RedirectToAction("Index");
 
@@ -208,7 +218,10 @@ namespace PiDevCRM.Web.Controllers
         }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
         public ActionResult Dashboard()
         {
             var list = Cs.GetAll();
@@ -227,6 +240,9 @@ namespace PiDevCRM.Web.Controllers
             return View();
         }
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
     }
